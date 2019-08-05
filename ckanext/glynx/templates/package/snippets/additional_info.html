@@ -1,0 +1,10 @@
+{% ckan_extends %}
+
+{% block extras %}
+  {% if pkg_dict.status %}
+    <tr>
+      <th scope="row" class="dataset-label">{{ _("Status") }}</th>
+      <td class="dataset-details">{{ pkg_dict.status[0] }}</td>
+    </tr>
+  {% endif %}
+{% endblock %}
