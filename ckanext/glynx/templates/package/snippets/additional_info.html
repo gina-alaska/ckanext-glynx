@@ -7,4 +7,16 @@
       <td class="dataset-details">{{ pkg_dict.status[0] }}</td>
     </tr>
   {% endif %}
+  {% if pkg_dict.archived_at %}
+    <tr>
+      <th scope="row" class="dataset-label">{{ _("Archived At") }}</th>
+      <td class="dataset-details">{{ pkg_dict.archived_at }}</td>
+    </tr>
+  {% endif %}
+  {% if pkg_dict.request_contact_info %}
+    <tr>
+      <th scope="row" class="dataset-label">{{ _("Request Contact Info") }}</th>
+      <td class="dataset-details">{{ pkg_dict.request_contact_info }}</td>
+    </tr>
+  {% endif %}
 {% endblock %}
