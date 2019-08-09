@@ -13,6 +13,7 @@ def create_status_vocab():
         vocab = tk.get_action('vocabulary_create')(context, data)
 
 def status_options():
+    create_status_vocab()
     try:
         tag_list = tk.get_action('tag_list')
         status_options = tag_list(data_dict={'vocabulary_id': 'status'})
@@ -24,9 +25,6 @@ class GlynxPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
     p.implements(p.ITemplateHelpers)
     p.implements(p.IDatasetForm)
     p.implements(p.IConfigurer)
-
-    def configure(self):
-        create_status_vocab()
 
     # Populates Status dropdown with vocabulary created above.
     def get_helpers(self):
