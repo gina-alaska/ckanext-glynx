@@ -11,8 +11,8 @@
     <label class="control-label" for="field-status">{{ _("Status") }}</label>
     <div class="controls">
       <select id="field-status" name="status" data-module="autocomplete">
-        {% for status_option in h.status_options()  %}
-          <option value="{{ status_option }}" {% if status_option in data.get('status', []) %}selected="selected"{% endif %}>{{ status_option }}</option>
+        {% for option in h.status()  %}
+          <option value="{{ option }}" {% if option in data.get('status', []) %}selected="selected"{% endif %}>{{ option }}</option>
         {% endfor %}
       </select>
     </div>

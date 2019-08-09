@@ -2,24 +2,20 @@ import ckan.plugins as p
 import ckan.plugins.toolkit as tk
 
 # Vocabulary for custom Status dropdown is created here.
-def create_status_options():
+def create_status_vocab():
     user = tk.get_action('get_site_user')({'ignore_auth': True}, {})
     context = {'user': user['name']}
     try:
-        data = {'id': 'status_options'}
+        data = {'id': 'status'}
         tk.get_action('vocabulary_show')(context, data)
     except tk.ObjectNotFound:
-        data = {'name': 'status_options'}
+        data = {'name': 'status'}
         vocab = tk.get_action('vocabulary_create')(context, data)
-        for tag in (u'Complete', u'In Progress', u'To Do'):
-            data = {'name': tag, 'vocabulary_id': vocab['id']}
-            tk.get_action('tag_create')(context, data)
 
 def status_options():
-    create_status_options()
     try:
         tag_list = tk.get_action('tag_list')
-        status_options = tag_list(data_dict={'vocabulary_id': 'status_options'})
+        status_options = tag_list(data_dict={'vocabulary_id': 'status'})
         return status_options
     except tk.ObjectNotFound:
         return None
@@ -29,9 +25,12 @@ class GlynxPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
     p.implements(p.IDatasetForm)
     p.implements(p.IConfigurer)
 
+    def configure(self):
+        create_status_vocab()
+
     # Populates Status dropdown with vocabulary created above.
     def get_helpers(self):
-        return {'status_options': status_options}
+        return {'status': status_options}
 
     def create_package_schema(self):
         schema = super(GlynxPlugin, self).create_package_schema()
@@ -39,7 +38,7 @@ class GlynxPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
         # Custom "Status" (dropdown) field.
         schema.update({
             'status': [
-                tk.get_converter('convert_to_tags')('status_options')
+                tk.get_converter('convert_to_tags')('status')
             ]
         })
 
@@ -67,7 +66,7 @@ class GlynxPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
         # Custom "Status" (dropdown) field.
         schema.update({
             'status': [
-                tk.get_converter('convert_to_tags')('status_options')
+                tk.get_converter('convert_to_tags')('status')
             ]
         })
 
@@ -96,7 +95,7 @@ class GlynxPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
         # Custom "Status" (dropdown) field.
         schema.update({
             'status': [
-                tk.get_converter('convert_from_tags')('status_options')
+                tk.get_converter('convert_from_tags')('status')
             ]
         })
 
