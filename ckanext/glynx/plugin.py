@@ -48,6 +48,22 @@ class GlynxPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
             ]
         })
 
+        # Custom "Start Date" (date) field.
+        schema.update({
+            'start_date': [
+                tk.get_validator('isodate'),
+                tk.get_converter('convert_to_extras')
+            ]
+        })
+
+        # Custom "End Date" (date) field.
+        schema.update({
+            'end_date': [
+                tk.get_validator('isodate'),
+                tk.get_converter('convert_to_extras')
+            ]
+        })
+
         # Custom "Request Contact Info" (boolean) field.
         schema.update({
             'request_contact_info': [
@@ -71,6 +87,22 @@ class GlynxPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
         # Custom "Archived at" (date) field.
         schema.update({
             'archived_at': [
+                tk.get_validator('isodate'),
+                tk.get_converter('convert_to_extras')
+            ]
+        })
+
+        # Custom "Start Date" (date) field.
+        schema.update({
+            'start_date': [
+                tk.get_validator('isodate'),
+                tk.get_converter('convert_to_extras')
+            ]
+        })
+
+        # Custom "End Date" (date) field.
+        schema.update({
+            'end_date': [
                 tk.get_validator('isodate'),
                 tk.get_converter('convert_to_extras')
             ]
@@ -100,6 +132,22 @@ class GlynxPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
         # Custom "Archived at" (date) field.
         schema.update({
             'archived_at': [
+                tk.get_validator('isodate'),
+                tk.get_converter('convert_from_extras')
+            ]
+        })
+
+        # Custom "Start Date" (date) field.
+        schema.update({
+            'start_date': [
+                tk.get_validator('isodate'),
+                tk.get_converter('convert_from_extras')
+            ]
+        })
+
+        # Custom "End Date" (date) field.
+        schema.update({
+            'end_date': [
                 tk.get_validator('isodate'),
                 tk.get_converter('convert_from_extras')
             ]

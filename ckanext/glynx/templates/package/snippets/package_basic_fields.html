@@ -1,6 +1,0 @@
-{% ckan_extends %}
-
-{% block package_basic_fields_custom %}
-  {{ form.input('archived_at', label=_('Archived at'), id='field-archived-at', placeholder=_('e.g., 2019-08-06T05:39:42'), value=data.archived_at, error=errors.archived_at, classes=['control-medium']) }}
-  {{ form.input('request_contact_info', label=_('Request Contact Info'), id='field-request-contact-info', placeholder=_('e.g., true'), value=data.request_contact_info, error=errors.request_contact_info, classes=['control-medium']) }}
-{% endblock %}

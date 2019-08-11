@@ -9,8 +9,20 @@
   {% endif %}
   {% if pkg_dict.archived_at %}
     <tr>
-      <th scope="row" class="dataset-label">{{ _("Archived At") }}</th>
+      <th scope="row" class="dataset-label">{{ _("Archived at") }}</th>
       <td class="dataset-details">{{ pkg_dict.archived_at }}</td>
+    </tr>
+  {% endif %}
+  {% if pkg_dict.start_date %}
+    <tr>
+      <th scope="row" class="dataset-label">{{ _("Start Date") }}</th>
+      <td class="dataset-details">{{ pkg_dict.start_date }}</td>
+    </tr>
+  {% endif %}
+  {% if pkg_dict.end_date %}
+    <tr>
+      <th scope="row" class="dataset-label">{{ _("End Date") }}</th>
+      <td class="dataset-details">{{ pkg_dict.end_date }}</td>
     </tr>
   {% endif %}
   {% if pkg_dict.request_contact_info %}
