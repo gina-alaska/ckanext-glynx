@@ -33,39 +33,22 @@ class GlynxPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
     def create_package_schema(self):
         schema = super(GlynxPlugin, self).create_package_schema()
 
-        # Custom "Status" (dropdown) field.
         schema.update({
             'status': [
                 tk.get_converter('convert_to_tags')('status')
-            ]
-        })
-
-        # Custom "Archived at" (date) field.
-        schema.update({
+            ],
             'archived_at': [
                 tk.get_validator('isodate'),
                 tk.get_converter('convert_to_extras')
-            ]
-        })
-
-        # Custom "Start Date" (date) field.
-        schema.update({
+            ],
             'start_date': [
                 tk.get_validator('isodate'),
                 tk.get_converter('convert_to_extras')
-            ]
-        })
-
-        # Custom "End Date" (date) field.
-        schema.update({
+            ],
             'end_date': [
                 tk.get_validator('isodate'),
                 tk.get_converter('convert_to_extras')
-            ]
-        })
-
-        # Custom "Request Contact Info" (boolean) field.
-        schema.update({
+            ],
             'request_contact_info': [
                 tk.get_validator('boolean_validator'),
                 tk.get_converter('convert_to_extras')
@@ -77,39 +60,22 @@ class GlynxPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
     def update_package_schema(self):
         schema = super(GlynxPlugin, self).update_package_schema()
 
-        # Custom "Status" (dropdown) field.
         schema.update({
             'status': [
                 tk.get_converter('convert_to_tags')('status')
-            ]
-        })
-
-        # Custom "Archived at" (date) field.
-        schema.update({
+            ],
             'archived_at': [
                 tk.get_validator('isodate'),
                 tk.get_converter('convert_to_extras')
-            ]
-        })
-
-        # Custom "Start Date" (date) field.
-        schema.update({
+            ],
             'start_date': [
                 tk.get_validator('isodate'),
                 tk.get_converter('convert_to_extras')
-            ]
-        })
-
-        # Custom "End Date" (date) field.
-        schema.update({
+            ],
             'end_date': [
                 tk.get_validator('isodate'),
                 tk.get_converter('convert_to_extras')
-            ]
-        })
-
-        # Custom "Request Contact Info" (boolean) field.
-        schema.update({
+            ],
             'request_contact_info': [
                 tk.get_validator('boolean_validator'),
                 tk.get_converter('convert_to_extras')
@@ -122,39 +88,22 @@ class GlynxPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
         schema = super(GlynxPlugin, self).show_package_schema()
         schema['tags']['__extras'].append(tk.get_converter('free_tags_only'))
 
-        # Custom "Status" (dropdown) field.
         schema.update({
             'status': [
                 tk.get_converter('convert_from_tags')('status')
-            ]
-        })
-
-        # Custom "Archived at" (date) field.
-        schema.update({
+            ],
             'archived_at': [
                 tk.get_validator('isodate'),
                 tk.get_converter('convert_from_extras')
-            ]
-        })
-
-        # Custom "Start Date" (date) field.
-        schema.update({
+            ],
             'start_date': [
                 tk.get_validator('isodate'),
                 tk.get_converter('convert_from_extras')
-            ]
-        })
-
-        # Custom "End Date" (date) field.
-        schema.update({
+            ],
             'end_date': [
                 tk.get_validator('isodate'),
                 tk.get_converter('convert_from_extras')
-            ]
-        })
-
-        # Custom "Request Contact Info" (boolean) field.
-        schema.update({
+            ],
             'request_contact_info': [
                 tk.get_validator('boolean_validator'),
                 tk.get_converter('convert_from_extras')
