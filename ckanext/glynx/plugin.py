@@ -12,12 +12,32 @@ def create_status_vocab():
         data = {'name': 'status'}
         vocab = tk.get_action('vocabulary_create')(context, data)
 
+# Vocabulary for custom Use Agreement dropdown is created here.
+def create_use_agreement_vocab():
+    user = tk.get_action('get_site_user')({'ignore_auth': True}, {})
+    context = {'user': user['name']}
+    try:
+        data = {'id': 'use_agreement'}
+        tk.get_action('vocabulary_show')(context, data)
+    except tk.ObjectNotFound:
+        data = {'name': 'use_agreement'}
+        vocab = tk.get_action('vocabulary_create')(context, data)
+
 def status_options():
     create_status_vocab()
     try:
         tag_list = tk.get_action('tag_list')
         status_options = tag_list(data_dict={'vocabulary_id': 'status'})
         return status_options
+    except tk.ObjectNotFound:
+        return None
+
+def use_agreement_options():
+    create_use_agreement_vocab()
+    try:
+        tag_list = tk.get_action('tag_list')
+        use_agreement_options = tag_list(data_dict={'vocabulary_id': 'use_agreement'})
+        return use_agreement_options
     except tk.ObjectNotFound:
         return None
 
@@ -28,7 +48,10 @@ class GlynxPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
 
     # Populates Status dropdown with vocabulary created above.
     def get_helpers(self):
-        return {'status': status_options}
+        return {
+            'status': status_options,
+            'use_agreement': use_agreement_options
+        }
 
     def create_package_schema(self):
         schema = super(GlynxPlugin, self).create_package_schema()
@@ -49,7 +72,14 @@ class GlynxPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
                 tk.get_validator('isodate'),
                 tk.get_converter('convert_to_extras')
             ],
+            'use_agreement': [
+                tk.get_converter('convert_to_tags')('use_agreement')
+            ],
             'request_contact_info': [
+                tk.get_validator('boolean_validator'),
+                tk.get_converter('convert_to_extras')
+            ],
+            'require_contact_info': [
                 tk.get_validator('boolean_validator'),
                 tk.get_converter('convert_to_extras')
             ]
@@ -76,7 +106,14 @@ class GlynxPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
                 tk.get_validator('isodate'),
                 tk.get_converter('convert_to_extras')
             ],
+            'use_agreement': [
+                tk.get_converter('convert_to_tags')('use_agreement')
+            ],
             'request_contact_info': [
+                tk.get_validator('boolean_validator'),
+                tk.get_converter('convert_to_extras')
+            ],
+            'require_contact_info': [
                 tk.get_validator('boolean_validator'),
                 tk.get_converter('convert_to_extras')
             ]
@@ -104,7 +141,14 @@ class GlynxPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
                 tk.get_validator('isodate'),
                 tk.get_converter('convert_from_extras')
             ],
+            'use_agreement': [
+                tk.get_converter('convert_from_tags')('use_agreement')
+            ],
             'request_contact_info': [
+                tk.get_validator('boolean_validator'),
+                tk.get_converter('convert_from_extras')
+            ],
+            'require_contact_info': [
                 tk.get_validator('boolean_validator'),
                 tk.get_converter('convert_from_extras')
             ]

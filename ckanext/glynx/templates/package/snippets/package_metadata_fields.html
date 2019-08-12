@@ -6,17 +6,31 @@
 #}
 
 {% block package_metadata_fields %}
-  {{ form.input('archived_at', label=_('Archived at'), id='field-archived-at', placeholder=_('e.g., 2019-08-06'), value=data.archived_at, error=errors.archived_at, classes=['control-medium']) }}
-  {{ form.input('start_date', label=_('Start Date'), id='field-start-date', placeholder=_('e.g., 2019-08-06'), value=data.start_date, error=errors.start_date, classes=['control-medium']) }}
-  {{ form.input('end_date', label=_('End Date'), id='field-end-date', placeholder=_('e.g., 2019-08-06'), value=data.end_date, error=errors.end_date, classes=['control-medium']) }}
-  {{ form.input('request_contact_info', label=_('Request Contact Info'), id='field-request-contact-info', placeholder=_('e.g., true'), value=data.request_contact_info, error=errors.request_contact_info, classes=['control-medium']) }}
-
   <div class="control-group form-group">
     <label class="control-label" for="field-status">{{ _("Status") }}</label>
     <div class="controls">
       <select id="field-status" name="status" data-module="autocomplete">
         {% for option in h.status()  %}
           <option value="{{ option }}" {% if option in data.get('status', []) %}selected="selected"{% endif %}>{{ option }}</option>
+        {% endfor %}
+      </select>
+    </div>
+  </div>
+
+  {{ form.input('archived_at', label=_('Archived at'), id='field-archived-at', placeholder=_('e.g., 2019-08-06'), value=data.archived_at, error=errors.archived_at, classes=['control-medium']) }}
+
+  {{ form.input('start_date', label=_('Start Date'), id='field-start-date', placeholder=_('e.g., 2019-08-06'), value=data.start_date, error=errors.start_date, classes=['control-medium']) }}
+
+  {{ form.input('end_date', label=_('End Date'), id='field-end-date', placeholder=_('e.g., 2019-08-06'), value=data.end_date, error=errors.end_date, classes=['control-medium']) }}
+
+  {{ form.input('request_contact_info', label=_('Request Contact Info'), id='field-request-contact-info', placeholder=_('e.g., true'), value=data.request_contact_info, error=errors.request_contact_info, classes=['control-medium']) }}
+
+  <div class="control-group form-group">
+    <label class="control-label" for="field-use-agreement">{{ _("Use Agreement") }}</label>
+    <div class="controls">
+      <select id="field-use-agreement" name="use-agreement" data-module="autocomplete">
+        {% for option in h.use_agreement()  %}
+          <option value="{{ option }}" {% if option in data.get('use_agreement', []) %}selected="selected"{% endif %}>{{ option }}</option>
         {% endfor %}
       </select>
     </div>

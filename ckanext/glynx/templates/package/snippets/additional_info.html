@@ -25,10 +25,22 @@
       <td class="dataset-details">{{ pkg_dict.end_date }}</td>
     </tr>
   {% endif %}
+  {% if pkg_dict.use_agreement %}
+    <tr>
+      <th scope="row" class="dataset-label">{{ _("Use Agreement") }}</th>
+      <td class="dataset-details">{{ pkg_dict.use_agreement[0] }}</td>
+    </tr>
+  {% endif %}
   {% if pkg_dict.request_contact_info %}
     <tr>
       <th scope="row" class="dataset-label">{{ _("Request Contact Info") }}</th>
       <td class="dataset-details">{{ pkg_dict.request_contact_info }}</td>
+    </tr>
+  {% endif %}
+  {% if pkg_dict.require_contact_info %}
+    <tr>
+      <th scope="row" class="dataset-label">{{ _("Require Contact Info") }}</th>
+      <td class="dataset-details">{{ pkg_dict.require_contact_info }}</td>
     </tr>
   {% endif %}
 {% endblock %}
