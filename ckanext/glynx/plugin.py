@@ -1,32 +1,31 @@
 import ckan.plugins as p
 import ckan.plugins.toolkit as tk
+import os
+import json
 
-def status_options():
-    try:
-        tag_list = tk.get_action('tag_list')
-        status_options = tag_list(data_dict={'vocabulary_id': 'status'})
-        return status_options
-    except tk.ObjectNotFound:
-        return None
+iso_topics_file = os.path.dirname(__file__) + '/iso_topic_categories.json'
+with open(iso_topics_file) as iso_topics_handle:
+    iso_topic_items = json.load(iso_topics_handle)['iso_topic_categories']
 
-def use_agreement_options():
-    try:
-        tag_list = tk.get_action('tag_list')
-        use_agreement_options = tag_list(data_dict={'vocabulary_id': 'use_agreement'})
-        return use_agreement_options
-    except tk.ObjectNotFound:
-        return None
+def iso_topic_categories():
+    return iso_topic_items
+
+statuses_file = os.path.dirname(__file__) + '/statuses.json'
+with open(statuses_file) as statuses_handle:
+    status_items = json.load(statuses_handle)['statuses']
+
+def statuses():
+    return status_items
 
 class GlynxPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
     p.implements(p.ITemplateHelpers)
     p.implements(p.IDatasetForm)
     p.implements(p.IConfigurer)
 
-    # Populates Status dropdown with vocabulary created above.
     def get_helpers(self):
         return {
-            'status': status_options,
-            'use_agreement': use_agreement_options
+            'statuses': statuses,
+            'iso_topic_categories': iso_topic_categories
         }
 
     def create_package_schema(self):
@@ -36,27 +35,11 @@ class GlynxPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
             'status': [
                 tk.get_converter('convert_to_tags')('status')
             ],
+            'iso_topic_category': [
+                tk.get_converter('convert_to_tags')('iso_topic_category')
+            ],
             'archived_at': [
                 tk.get_validator('isodate'),
-                tk.get_converter('convert_to_extras')
-            ],
-            'start_date': [
-                tk.get_validator('isodate'),
-                tk.get_converter('convert_to_extras')
-            ],
-            'end_date': [
-                tk.get_validator('isodate'),
-                tk.get_converter('convert_to_extras')
-            ],
-            'use_agreement': [
-                tk.get_converter('convert_to_tags')('use_agreement')
-            ],
-            'request_contact_info': [
-                tk.get_validator('boolean_validator'),
-                tk.get_converter('convert_to_extras')
-            ],
-            'require_contact_info': [
-                tk.get_validator('boolean_validator'),
                 tk.get_converter('convert_to_extras')
             ]
         })
@@ -70,27 +53,11 @@ class GlynxPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
             'status': [
                 tk.get_converter('convert_to_tags')('status')
             ],
+            'iso_topic_category': [
+                tk.get_converter('convert_to_tags')('iso_topic_category')
+            ],
             'archived_at': [
                 tk.get_validator('isodate'),
-                tk.get_converter('convert_to_extras')
-            ],
-            'start_date': [
-                tk.get_validator('isodate'),
-                tk.get_converter('convert_to_extras')
-            ],
-            'end_date': [
-                tk.get_validator('isodate'),
-                tk.get_converter('convert_to_extras')
-            ],
-            'use_agreement': [
-                tk.get_converter('convert_to_tags')('use_agreement')
-            ],
-            'request_contact_info': [
-                tk.get_validator('boolean_validator'),
-                tk.get_converter('convert_to_extras')
-            ],
-            'require_contact_info': [
-                tk.get_validator('boolean_validator'),
                 tk.get_converter('convert_to_extras')
             ]
         })
@@ -105,27 +72,11 @@ class GlynxPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
             'status': [
                 tk.get_converter('convert_from_tags')('status')
             ],
+            'iso_topic_category': [
+                tk.get_converter('convert_from_tags')('iso_topic_category')
+            ],
             'archived_at': [
                 tk.get_validator('isodate'),
-                tk.get_converter('convert_from_extras')
-            ],
-            'start_date': [
-                tk.get_validator('isodate'),
-                tk.get_converter('convert_from_extras')
-            ],
-            'end_date': [
-                tk.get_validator('isodate'),
-                tk.get_converter('convert_from_extras')
-            ],
-            'use_agreement': [
-                tk.get_converter('convert_from_tags')('use_agreement')
-            ],
-            'request_contact_info': [
-                tk.get_validator('boolean_validator'),
-                tk.get_converter('convert_from_extras')
-            ],
-            'require_contact_info': [
-                tk.get_validator('boolean_validator'),
                 tk.get_converter('convert_from_extras')
             ]
         })

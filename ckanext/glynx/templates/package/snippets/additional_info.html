@@ -7,40 +7,16 @@
       <td class="dataset-details">{{ pkg_dict.status[0] }}</td>
     </tr>
   {% endif %}
+  {% if pkg_dict.iso_topic_category %}
+    <tr>
+      <th scope="row" class="dataset-label">{{ _("Iso Topic Category") }}</th>
+      <td class="dataset-details">{{ h.iso_topic_categories()[pkg_dict.iso_topic_category[0]].name }}</td>
+    </tr>
+  {% endif %}
   {% if pkg_dict.archived_at %}
     <tr>
       <th scope="row" class="dataset-label">{{ _("Archived at") }}</th>
       <td class="dataset-details">{{ pkg_dict.archived_at }}</td>
-    </tr>
-  {% endif %}
-  {% if pkg_dict.start_date %}
-    <tr>
-      <th scope="row" class="dataset-label">{{ _("Start Date") }}</th>
-      <td class="dataset-details">{{ pkg_dict.start_date }}</td>
-    </tr>
-  {% endif %}
-  {% if pkg_dict.end_date %}
-    <tr>
-      <th scope="row" class="dataset-label">{{ _("End Date") }}</th>
-      <td class="dataset-details">{{ pkg_dict.end_date }}</td>
-    </tr>
-  {% endif %}
-  {% if pkg_dict.use_agreement %}
-    <tr>
-      <th scope="row" class="dataset-label">{{ _("Use Agreement") }}</th>
-      <td class="dataset-details">{{ pkg_dict.use_agreement[0] }}</td>
-    </tr>
-  {% endif %}
-  {% if pkg_dict.request_contact_info %}
-    <tr>
-      <th scope="row" class="dataset-label">{{ _("Request Contact Info") }}</th>
-      <td class="dataset-details">{{ pkg_dict.request_contact_info }}</td>
-    </tr>
-  {% endif %}
-  {% if pkg_dict.require_contact_info %}
-    <tr>
-      <th scope="row" class="dataset-label">{{ _("Require Contact Info") }}</th>
-      <td class="dataset-details">{{ pkg_dict.require_contact_info }}</td>
     </tr>
   {% endif %}
 {% endblock %}
