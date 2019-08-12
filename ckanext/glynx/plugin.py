@@ -1,30 +1,7 @@
 import ckan.plugins as p
 import ckan.plugins.toolkit as tk
 
-# Vocabulary for custom Status dropdown is created here.
-def create_status_vocab():
-    user = tk.get_action('get_site_user')({'ignore_auth': True}, {})
-    context = {'user': user['name']}
-    try:
-        data = {'id': 'status'}
-        tk.get_action('vocabulary_show')(context, data)
-    except tk.ObjectNotFound:
-        data = {'name': 'status'}
-        vocab = tk.get_action('vocabulary_create')(context, data)
-
-# Vocabulary for custom Use Agreement dropdown is created here.
-def create_use_agreement_vocab():
-    user = tk.get_action('get_site_user')({'ignore_auth': True}, {})
-    context = {'user': user['name']}
-    try:
-        data = {'id': 'use_agreement'}
-        tk.get_action('vocabulary_show')(context, data)
-    except tk.ObjectNotFound:
-        data = {'name': 'use_agreement'}
-        vocab = tk.get_action('vocabulary_create')(context, data)
-
 def status_options():
-    create_status_vocab()
     try:
         tag_list = tk.get_action('tag_list')
         status_options = tag_list(data_dict={'vocabulary_id': 'status'})
@@ -33,7 +10,6 @@ def status_options():
         return None
 
 def use_agreement_options():
-    create_use_agreement_vocab()
     try:
         tag_list = tk.get_action('tag_list')
         use_agreement_options = tag_list(data_dict={'vocabulary_id': 'use_agreement'})
