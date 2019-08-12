@@ -10,12 +10,22 @@ with open(iso_topics_file) as iso_topics_handle:
 def iso_topic_categories():
     return iso_topic_items
 
+def iso_topic_category_validator(value, context):
+    if value not in list(iso_topic_items.keys()):
+        raise tk.Invalid("Invalid Iso Topic Category value")
+    return value
+
 statuses_file = os.path.dirname(__file__) + '/statuses.json'
 with open(statuses_file) as statuses_handle:
     status_items = json.load(statuses_handle)['statuses']
 
 def statuses():
     return status_items
+
+def status_validator(value, context):
+    if value not in status_items:
+        raise tk.Invalid("Invalid Status value")
+    return value
 
 class GlynxPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
     p.implements(p.ITemplateHelpers)
@@ -33,9 +43,11 @@ class GlynxPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
 
         schema.update({
             'status': [
+                status_validator,
                 tk.get_converter('convert_to_extras')
             ],
             'iso_topic_category': [
+                iso_topic_category_validator,
                 tk.get_converter('convert_to_extras')
             ],
             'archived_at': [
