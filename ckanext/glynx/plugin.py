@@ -33,10 +33,10 @@ class GlynxPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
 
         schema.update({
             'status': [
-                tk.get_converter('convert_to_tags')('status')
+                tk.get_converter('convert_to_extras')
             ],
             'iso_topic_category': [
-                tk.get_converter('convert_to_tags')('iso_topic_category')
+                tk.get_converter('convert_to_extras')
             ],
             'archived_at': [
                 tk.get_validator('isodate'),
@@ -51,10 +51,10 @@ class GlynxPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
 
         schema.update({
             'status': [
-                tk.get_converter('convert_to_tags')('status')
+                tk.get_converter('convert_to_extras')
             ],
             'iso_topic_category': [
-                tk.get_converter('convert_to_tags')('iso_topic_category')
+                tk.get_converter('convert_to_extras')
             ],
             'archived_at': [
                 tk.get_validator('isodate'),
@@ -66,14 +66,13 @@ class GlynxPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
 
     def show_package_schema(self):
         schema = super(GlynxPlugin, self).show_package_schema()
-        schema['tags']['__extras'].append(tk.get_converter('free_tags_only'))
 
         schema.update({
             'status': [
-                tk.get_converter('convert_from_tags')('status')
+                tk.get_converter('convert_from_extras')
             ],
             'iso_topic_category': [
-                tk.get_converter('convert_from_tags')('iso_topic_category')
+                tk.get_converter('convert_from_extras')
             ],
             'archived_at': [
                 tk.get_validator('isodate'),
