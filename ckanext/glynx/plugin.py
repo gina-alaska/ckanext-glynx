@@ -1,4 +1,4 @@
-# This code was adapted from CKAN's "adding custom fields" guide:
+# This code was adapted from the "adding custom fields" guide:
 # https://docs.ckan.org/en/2.8/extensions/adding-custom-fields.html
 
 import ckan.plugins as p
@@ -11,32 +11,38 @@ statuses_file = os.path.dirname(__file__) + '/statuses.json'
 with open(statuses_file) as statuses_handle:
     status_items = json.load(statuses_handle)['statuses']
 
-# Helper function that gets called in templates as h.statuses().
-def statuses():
-    return status_items
-
-# Custom validator to make sure the status provided through edit form or API is
-# present in the list read from JSON file.
-def status_validator(value, context):
-    if value not in status_items:
-        raise tk.Invalid("Invalid Status value")
-    return value
 
 # Read iso_topic_categories.json, store in variable for later.
 iso_topics_file = os.path.dirname(__file__) + '/iso_topic_categories.json'
 with open(iso_topics_file) as iso_topics_handle:
     iso_topic_items = json.load(iso_topics_handle)['iso_topic_categories']
 
+
+# Helper function that gets called in templates as h.statuses().
+def statuses():
+    return status_items
+
+
+# Custom validator to make sure the status provided through edit form or API is
+# present in the list read from JSON file.
+def status_validator(value, context):
+    if value not in status_items:
+        raise tk.Invalid('Invalid Status value')
+    return value
+
+
 # Helper function that gets called in templates as h.iso_topic_categories().
 def iso_topic_categories():
     return iso_topic_items
+
 
 # Custom validator to make sure the iso_topic_category key provided through the
 # edit form or API is present in the list of keys read from JSON file.
 def iso_topic_category_validator(value, context):
     if value not in list(iso_topic_items.keys()):
-        raise tk.Invalid("Invalid Iso Topic Category value: {}".format(value))
+        raise tk.Invalid('Invalid Iso Topic Category value: {}'.format(value))
     return value
+
 
 class GlynxPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
     p.implements(p.ITemplateHelpers)
