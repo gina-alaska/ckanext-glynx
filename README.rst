@@ -6,7 +6,11 @@ Extend CKAN with custom fields, vocabularies, and tags migrated from GLynx.
 Setup
 -----
 
-Install the CKAN extension:
+The ckanext-glynx extension requires the ckanext-spatial extension. Install the ckanext-spatial extension using this documentation:
+
+https://docs.ckan.org/projects/ckanext-spatial/en/latest/install.html#install-postgis-and-system-packages
+
+Then, install the CKAN extension:
 
 .. code-block:: console
 
@@ -16,8 +20,8 @@ Install the CKAN extension:
     cd ckanext-glynx
     python setup.py develop
 
-Then load the extension by adding ``glynx`` to the ckan.plugins line in ``/etc/ckan/default/development.ini``:
+Load the ckanext-glynx extension and its ckanext-spatial dependencies by adding them to the the ckan.plugins line in ``/etc/ckan/default/development.ini``:
 
 .. code-block::
 
-    ckan.plugins = stats text_view image_view recline_view glynx
+    ckan.plugins = stats text_view image_view recline_view glynx spatial_metadata spatial_query
