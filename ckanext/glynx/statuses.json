@@ -1,6 +1,8 @@
 {
   "statuses": [
     "Complete",
-    "Remote"
+    "Ongoing",
+    "Unknown",
+    "Funded"
   ]
 }
