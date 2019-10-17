@@ -1,8 +1,80 @@
 {
   "iso_topic_categories": {
     "001": {
-      "name": "farming",
+      "name": "Farming",
       "long_name": "rearing of animals and/or cultivation of plants"
+    },
+    "002": {
+      "name": "Biota",
+      "long_name": "flora and/or fauna in natural environment"
+    },
+    "003": {
+      "name": "Boundaries",
+      "long_name": "legal land descriptions"
+    },
+    "004": {
+      "name": "ClimatologyMeteorologyAtmosphere",
+      "long_name": "processes and phenomena of the atmosphere"
+    },
+    "005": {
+      "name": "Economy",
+      "long_name": "economic activities, conditions and employment"
+    },
+    "006": {
+      "name": "Elevation",
+      "long_name": "height above or below sea level"
+    },
+    "007": {
+      "name": "Environment",
+      "long_name": "environmental resources, protection and conservation"
+    },
+    "008": {
+      "name": "GeoscientificInformation",
+      "long_name": "information pertaining to earth sciences"
+    },
+    "009": {
+      "name": "Health",
+      "long_name": "health, health services, human ecology, and safety"
+    },
+    "010": {
+      "name": "ImageryBaseMapsEarthCover",
+      "long_name": "base maps"
+    },
+    "011": {
+      "name": "IntelligenceMilitary",
+      "long_name": "military bases, structures, activities"
+    },
+    "012": {
+      "name": "InlandWaters",
+      "long_name": "inland water features, drainage systems and their characteristics"
+    },
+    "013": {
+      "name": "Location",
+      "long_name": "positional information and services"
+    },
+    "014": {
+      "name": "Oceans",
+      "long_name": "features and characteristics of salt water bodies (excluding inland waters)"
+    },
+    "015": {
+      "name": "PlanningCadastre",
+      "long_name": "information used for appropriate actions for future use of the land"
+    },
+    "016": {
+      "name": "Society",
+      "long_name": "characteristics of society and cultures"
+    },
+    "017": {
+      "name": "Structure",
+      "long_name": "man-made construction"
+    },
+    "018": {
+      "name": "Transportation",
+      "long_name": "means and aids for conveying persons and/or goods"
+    },
+    "019": {
+      "name": "UtilitiesCommunication",
+      "long_name": "energy, water and waste systems and communications infrastructure and services"
     }
   }
 }
