@@ -69,7 +69,7 @@ class GlynxPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
                 tk.get_converter('convert_to_extras')
             ],
             'archived_at': [
-                tk.get_validator('isodate'),
+                # tk.get_validator('isodate'),
                 tk.get_converter('convert_to_extras')
             ]
         })
@@ -90,7 +90,7 @@ class GlynxPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
                 tk.get_converter('convert_to_extras')
             ],
             'archived_at': [
-                tk.get_validator('isodate'),
+                # tk.get_validator('isodate'),
                 tk.get_converter('convert_to_extras')
             ]
         })
@@ -111,7 +111,7 @@ class GlynxPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
                 tk.get_converter('convert_from_extras')
             ],
             'archived_at': [
-                tk.get_validator('isodate'),
+                # tk.get_validator('isodate'),
                 tk.get_converter('convert_from_extras')
             ]
         })
