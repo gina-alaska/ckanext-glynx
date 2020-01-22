@@ -48,6 +48,14 @@ class GlynxPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
     p.implements(p.ITemplateHelpers)
     p.implements(p.IDatasetForm)
     p.implements(p.IConfigurer)
+    p.implements(p.IPackageController, inherit=True)
+
+    # IPackageController
+
+    def before_search(self, data_dict):
+        if not data_dict.get('sort'):
+            data_dict['sort'] = 'title_string asc'
+        return data_dict
 
     def get_helpers(self):
         return {
@@ -133,13 +141,3 @@ class GlynxPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
         # that CKAN will use this plugin's custom templates.
         tk.add_template_directory(config, 'templates')
 
-class ThemePlugin(plugins.SingletonPlugin):
-    plugins.implements(plugins.IPackageController, inherit=True)
-
-    # IPackageController
-
-    def before_search(self, data_dict):
-        if not data_dict.get('sort'):
-            data_dict['sort'] = 'title_string asc'
-        return data_dict
-        
