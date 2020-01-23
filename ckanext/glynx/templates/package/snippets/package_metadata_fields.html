@@ -2,13 +2,9 @@
 
 {% block package_metadata_fields %}
   <div class="control-group form-group">
-    <label class="control-label" for="field-status">{{ _("Status") }}</label>
+    <label class="control-label" for="field-status">{{ _("Spatial") }}</label>
     <div class="controls">
-      <select id="field-status" name="status" data-module="autocomplete">
-        {% for option in h.statuses() %}
-          <option value="{{ option }}" {% if option in data.get('status', []) %}selected="selected"{% endif %}>{{ option }}</option>
-        {% endfor %}
-      </select>
+      <input id="field-spatial" name="spatial" data-module="autocomplete">
     </div>
   </div>
 
