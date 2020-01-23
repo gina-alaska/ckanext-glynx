@@ -1,10 +1,7 @@
 {% ckan_extends %}
 
 {% block package_metadata_fields %}
-  <div class="control-group form-group">
-    <label class="control-label" for="field-spatial">{{ _("Spatial") }}</label>
-    <input id="field-spatial" name="spatial" size=80>
-  </div>
+  {{ form.input('spatial', label=_('Spatial Location'), id='field-spatial', placeholder=_('JSON Feature Code'), value=data.spatial, error=errors.spatial, classes=['control-medium']) }}
 
   <div class="control-group form-group">
     <label class="control-label" for="field-iso-topic-category">{{ _("Iso Topic Category") }}</label>
