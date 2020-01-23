@@ -6,29 +6,10 @@ import ckan.plugins.toolkit as tk
 import os
 import json
 
-# Read statuses.json, store in variable for later.
-statuses_file = os.path.dirname(__file__) + '/statuses.json'
-with open(statuses_file) as statuses_handle:
-    status_items = json.load(statuses_handle)['statuses']
-
-
 # Read iso_topic_categories.json, store in variable for later.
 iso_topics_file = os.path.dirname(__file__) + '/iso_topic_categories.json'
 with open(iso_topics_file) as iso_topics_handle:
     iso_topic_items = json.load(iso_topics_handle)['iso_topic_categories']
-
-
-# Helper function that gets called in templates as h.statuses().
-def statuses():
-    return status_items
-
-
-# Custom validator to make sure the status provided through edit form or API is
-# present in the list read from JSON file.
-def status_validator(value, context):
-    if value not in status_items:
-        raise tk.Invalid('Invalid Status value')
-    return value
 
 
 # Helper function that gets called in templates as h.iso_topic_categories().
@@ -59,7 +40,6 @@ class GlynxPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
 
     def get_helpers(self):
         return {
-            'statuses': statuses,
             'iso_topic_categories': iso_topic_categories
         }
 
@@ -68,10 +48,6 @@ class GlynxPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
         schema = super(GlynxPlugin, self).create_package_schema()
 
         schema.update({
-            'status': [
-                status_validator,
-                tk.get_converter('convert_to_extras')
-            ],
             'iso_topic_category': [
                 iso_topic_category_validator,
                 tk.get_converter('convert_to_extras')
@@ -89,10 +65,6 @@ class GlynxPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
         schema = super(GlynxPlugin, self).update_package_schema()
 
         schema.update({
-            'status': [
-                status_validator,
-                tk.get_converter('convert_to_extras')
-            ],
             'iso_topic_category': [
                 iso_topic_category_validator,
                 tk.get_converter('convert_to_extras')
@@ -110,10 +82,6 @@ class GlynxPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
         schema = super(GlynxPlugin, self).show_package_schema()
 
         schema.update({
-            'status': [
-                status_validator,
-                tk.get_converter('convert_from_extras')
-            ],
             'iso_topic_category': [
                 iso_topic_category_validator,
                 tk.get_converter('convert_from_extras')
