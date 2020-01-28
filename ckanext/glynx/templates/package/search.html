@@ -19,7 +19,7 @@
 
 {% block secondary_content %}
 
-  {% snippet "spatial/snippets/spatial_query.html" %}
+  {% snippet "spatial/snippets/spatial_query.html", default_extent=": [[-180.703125, 48.45835188280866 ], [-115.31249999999999, 74.68325030051861 ]]" %}
   {{ super() }}
 
 {% endblock %}
