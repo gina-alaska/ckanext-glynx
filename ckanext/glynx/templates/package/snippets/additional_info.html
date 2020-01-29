@@ -1,18 +1,6 @@
 {% ckan_extends %}
 
 {% block extras %}
-  {% if pkg_dict.status %}
-    <tr>
-      <th scope="row" class="dataset-label">{{ _("Status") }}</th>
-      <td class="dataset-details">{{ pkg_dict.status }}</td>
-    </tr>
-  {% endif %}
-  {% if pkg_dict.iso_topic_category %}
-    <tr>
-      <th scope="row" class="dataset-label">{{ _("Iso Topic Category") }}</th>
-      <td class="dataset-details">{{ h.iso_topic_categories()[pkg_dict.iso_topic_category].name }}</td>
-    </tr>
-  {% endif %}
   {% if pkg_dict.archived_at %}
     <tr>
       <th scope="row" class="dataset-label">{{ _("Archived at") }}</th>
