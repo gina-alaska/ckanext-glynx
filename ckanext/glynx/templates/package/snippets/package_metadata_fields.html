@@ -1,17 +1,6 @@
 {% ckan_extends %}
 
 {% block package_metadata_fields %}
-  <div class="control-group form-group">
-    <label class="control-label" for="field-iso-topic-category">{{ _("Iso Topic Category") }}</label>
-    <div class="controls">
-      <select id="field-iso-topic-category" name="iso_topic_category" data-module="autocomplete">
-        {% for key, value in h.iso_topic_categories().iteritems() %}
-          <option value="{{ key }}" {% if key in data.get('iso_topic_category', []) %}selected="selected"{% endif %}>{{ value.name }}</option>
-        {% endfor %}
-      </select>
-    </div>
-  </div>
-
   {{ form.input('archived_at', label=_('Archived at'), id='field-archived-at', placeholder=_('e.g., 2019-08-06'), value=data.archived_at, error=errors.archived_at, classes=['control-medium']) }}
 
   {{ super() }}
