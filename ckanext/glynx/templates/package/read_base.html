@@ -6,6 +6,8 @@
     {% snippet "spatial/snippets/dataset_map_sidebar.html", extent=dataset_extent %}
   {% endif %}
 
+  {% snippet "package/snippets/resource_image.html", pkg=pkg %}
+
   {{ super() }}
 
 {% endblock %}
