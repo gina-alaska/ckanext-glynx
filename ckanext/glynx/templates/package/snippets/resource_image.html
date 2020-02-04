@@ -9,7 +9,7 @@
         {% block resources_list %}
           <ul class="list-unstyled nav nav-simple">
             {% for resource in resources %}
-              {% if resource.format == "JPEG" %}
+              {% if resource.format == "JPEG" or resource.format == "PNG" %}
                 <li class="nav-item{{ ' active' if active == resource.id }}">
                   <a href="{{ resource.url }}" target="_blank">
                     <img src="{{resource.url}}" width="280" />
