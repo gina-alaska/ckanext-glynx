@@ -46,10 +46,10 @@ class GlynxPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
         
         return pkg_dict
 
-    # def get_helpers(self):
-    #     return {
-    #         'iso_topic_categories': iso_topic_categories
-    #     }
+    def get_helpers(self):
+        return {
+        #    'iso_topic_categories': iso_topic_categories
+        }
 
     # Custom field support for package creation.
     def create_package_schema(self):
