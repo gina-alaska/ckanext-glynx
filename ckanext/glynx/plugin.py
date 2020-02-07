@@ -38,6 +38,14 @@ class GlynxPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
             data_dict['sort'] = 'title_string asc'
         return data_dict
 
+    # Change the sort index to be case insensitive
+    def before_index(self, pkg_dict):
+        title = pkg_dict['title']
+        if title:
+            pkg_dict['title_string'] = title.lower()
+        
+        return pkg_dict
+
     def get_helpers(self):
         return {
             'iso_topic_categories': iso_topic_categories
