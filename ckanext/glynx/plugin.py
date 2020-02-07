@@ -48,59 +48,59 @@ class GlynxPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
 
     def get_helpers(self):
         return {
-        #    'iso_topic_categories': iso_topic_categories
+        #         'iso_topic_categories': iso_topic_categories
         }
 
     # Custom field support for package creation.
-    def create_package_schema(self):
-        schema = super(GlynxPlugin, self).create_package_schema()
+    #def create_package_schema(self):
+    #    schema = super(GlynxPlugin, self).create_package_schema()
 
-        schema.update({
-            # 'iso_topic_category': [
-            #     iso_topic_category_validator,
-            #     tk.get_converter('convert_to_extras')
-            # ],
-            'archived_at': [
-                # tk.get_validator('isodate'),
-                tk.get_converter('convert_to_extras')
-            ]
-        })
+    #    schema.update({
+    #        # 'iso_topic_category': [
+    #        #     iso_topic_category_validator,
+    #        #     tk.get_converter('convert_to_extras')
+    #        # ],
+    #        'archived_at': [
+    #            # tk.get_validator('isodate'),
+    #            tk.get_converter('convert_to_extras')
+    #        ]
+    #    })
 
-        return schema
+    #    return schema
 
     # Custom field support for package updates.
-    def update_package_schema(self):
-        schema = super(GlynxPlugin, self).update_package_schema()
+    #def update_package_schema(self):
+    #    schema = super(GlynxPlugin, self).update_package_schema()
 
-        schema.update({
-            # 'iso_topic_category': [
-            #     iso_topic_category_validator,
-            #     tk.get_converter('convert_to_extras')
-            # ],
-            'archived_at': [
-                # tk.get_validator('isodate'),
-                tk.get_converter('convert_to_extras')
-            ]
-        })
+    #    schema.update({
+    #        # 'iso_topic_category': [
+    #        #     iso_topic_category_validator,
+    #        #     tk.get_converter('convert_to_extras')
+    #        # ],
+    #        'archived_at': [
+    #            # tk.get_validator('isodate'),
+    #            tk.get_converter('convert_to_extras')
+    #        ]
+    #    })
 
-        return schema
+    #    return schema
 
     # Custom field support for package display.
-    def show_package_schema(self):
-        schema = super(GlynxPlugin, self).show_package_schema()
+    #def show_package_schema(self):
+    #    schema = super(GlynxPlugin, self).show_package_schema()
 
-        schema.update({
-            # 'iso_topic_category': [
-            #     iso_topic_category_validator,
-            #     tk.get_converter('convert_from_extras')
-            # ],
-            'archived_at': [
-                # tk.get_validator('isodate'),
-                tk.get_converter('convert_from_extras')
-            ]
-        })
+    #    schema.update({
+    #        # 'iso_topic_category': [
+    #        #     iso_topic_category_validator,
+    #        #     tk.get_converter('convert_from_extras')
+    #        # ],
+    #        'archived_at': [
+    #            # tk.get_validator('isodate'),
+    #            tk.get_converter('convert_from_extras')
+    #        ]
+    #    })
 
-        return schema
+    #    return schema
 
     def is_fallback(self):
         # Return True to register this plugin as the default handler for
