@@ -7,22 +7,22 @@ import os
 import json
 
 # Read iso_topic_categories.json, store in variable for later.
-iso_topics_file = os.path.dirname(__file__) + '/iso_topic_categories.json'
-with open(iso_topics_file) as iso_topics_handle:
-    iso_topic_items = json.load(iso_topics_handle)['iso_topic_categories']
+# iso_topics_file = os.path.dirname(__file__) + '/iso_topic_categories.json'
+# with open(iso_topics_file) as iso_topics_handle:
+#     iso_topic_items = json.load(iso_topics_handle)['iso_topic_categories']
 
 
 # Helper function that gets called in templates as h.iso_topic_categories().
-def iso_topic_categories():
-    return iso_topic_items
+# def iso_topic_categories():
+#     return iso_topic_items
 
 
 # Custom validator to make sure the iso_topic_category key provided through the
 # edit form or API is present in the list of keys read from JSON file.
-def iso_topic_category_validator(value, context):
-    if value not in list(iso_topic_items.keys()):
-        raise tk.Invalid('Invalid Iso Topic Category value: {}'.format(value))
-    return value
+# def iso_topic_category_validator(value, context):
+#     if value not in list(iso_topic_items.keys()):
+#         raise tk.Invalid('Invalid Iso Topic Category value: {}'.format(value))
+#     return value
 
 
 class GlynxPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
@@ -46,20 +46,20 @@ class GlynxPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
         
         return pkg_dict
 
-    def get_helpers(self):
-        return {
-            'iso_topic_categories': iso_topic_categories
-        }
+    # def get_helpers(self):
+    #     return {
+    #         'iso_topic_categories': iso_topic_categories
+    #     }
 
     # Custom field support for package creation.
     def create_package_schema(self):
         schema = super(GlynxPlugin, self).create_package_schema()
 
         schema.update({
-            'iso_topic_category': [
-                iso_topic_category_validator,
-                tk.get_converter('convert_to_extras')
-            ],
+            # 'iso_topic_category': [
+            #     iso_topic_category_validator,
+            #     tk.get_converter('convert_to_extras')
+            # ],
             'archived_at': [
                 # tk.get_validator('isodate'),
                 tk.get_converter('convert_to_extras')
@@ -73,10 +73,10 @@ class GlynxPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
         schema = super(GlynxPlugin, self).update_package_schema()
 
         schema.update({
-            'iso_topic_category': [
-                iso_topic_category_validator,
-                tk.get_converter('convert_to_extras')
-            ],
+            # 'iso_topic_category': [
+            #     iso_topic_category_validator,
+            #     tk.get_converter('convert_to_extras')
+            # ],
             'archived_at': [
                 # tk.get_validator('isodate'),
                 tk.get_converter('convert_to_extras')
@@ -90,10 +90,10 @@ class GlynxPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
         schema = super(GlynxPlugin, self).show_package_schema()
 
         schema.update({
-            'iso_topic_category': [
-                iso_topic_category_validator,
-                tk.get_converter('convert_from_extras')
-            ],
+            # 'iso_topic_category': [
+            #     iso_topic_category_validator,
+            #     tk.get_converter('convert_from_extras')
+            # ],
             'archived_at': [
                 # tk.get_validator('isodate'),
                 tk.get_converter('convert_from_extras')
