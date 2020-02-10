@@ -30,6 +30,7 @@
     </p>
   {% endblock %}
   {% block resource_item_explore %}
+    <span class="btn-group">
       {% if res.url and h.is_url(res.url) %}
         <a href="{{ res.url }}" class="resource-url-analytics btn btn-primary pull-right" target="_blank">
           {% if res.has_views or res.url_type == 'upload' %}
@@ -41,5 +42,6 @@
           {% endif %}
         </a>
       {% endif %}
+    </span>
   {% endblock %}
 </li>
