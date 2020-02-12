@@ -3,9 +3,9 @@
 {% block organization_item %}
   <section class="group-list module module-narrow module-shallow">
     {% block organization_item_header %}
-      <header class="module-heading">
+      <header class="module-heading" style="width: 100px;">
         {% block organization_item_header_image %}
-        <a href="{{ url }}" style="width: 100px;">
+        <a class="module-image" href="{{ url }}" style="width: 100px;">
           <img src="{{ organization.image_display_url or h.url_for_static('/base/images/placeholder-organization.png') }}" alt="{{ organization.name }}" width=100 />
         </a>
         {% endblock %}
