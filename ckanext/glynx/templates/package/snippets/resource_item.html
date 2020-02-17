@@ -49,7 +49,7 @@
         </a>
       {% endif %}
       {% if can_edit %}
-        <a href="dataset/{{ pkg.id }}/resource/{{ res.id }}" class="btn btn-info">
+        <a href="{{ pkg.id }}/resource/{{ res.id }}" class="btn btn-info">
           <i class="fa fa-pencil-square-o"></i>
           {{ _('Edit') }}
         </a>
