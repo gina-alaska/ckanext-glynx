@@ -34,8 +34,13 @@
       {% if res.url and h.is_url(res.url) %}
         <a href="{{ res.url }}" class="resource-url-analytics btn btn-primary pull-right" target="_blank">
           {% if res.has_views or res.url_type == 'upload' %}
-            <i class="fa fa-arrow-circle-o-down"></i>
-            {{ _('View') }}
+            {% if res.format == 'PNG' or res.format == 'JPEG' %}
+              <i class="fa fa-arrow-circle-o-down"></i>
+              {{ _('View') }}
+            {% else %}
+              <i class="fa fa-arrow-circle-o-down"></i>
+              {{ _('Download') }}
+            {% endif %}
           {% else %}
             <i class="fa fa-external-link"></i>
             {{ _('Go to resource') }}
