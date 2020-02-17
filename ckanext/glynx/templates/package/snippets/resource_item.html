@@ -14,6 +14,7 @@
 #}
 {% set url_action = 'resource.edit' if url_is_edit and can_edit else 'resource.read' %}
 {% set url = h.url_for(url_action, id=pkg.id if is_activity_archive else pkg.name, resource_id=res.id, **({'activity_id': request.args['activity_id']} if 'activity_id' in request.args else {})) %}
+{% set formats = ['PNG', 'JPEG', 'PDF'] %}
 
 <li class="resource-item" data-id="{{ res.id }}">
   {% block resource_item_title %}
@@ -34,7 +35,7 @@
       {% if res.url and h.is_url(res.url) %}
         <a href="{{ res.url }}" class="resource-url-analytics btn btn-primary pull-right" target="_blank">
           {% if res.has_views or res.url_type == 'upload' %}
-            {% if res.format == 'PNG' or res.format == 'JPEG' %}
+            {% if res.format in formats %}
               <i class="fa fa-arrow-circle-o-down"></i>
               {{ _('View') }}
             {% else %}
