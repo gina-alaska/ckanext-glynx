@@ -31,7 +31,7 @@
     </p>
   {% endblock %}
   {% block resource_item_explore %}
-    <span class="text-right">
+    <div class="pull-right">
       {% if res.url and h.is_url(res.url) %}
         <a href="{{ res.url }}" class="resource-url-analytics btn btn-primary" target="_blank">
           {% if res.has_views or res.url_type == 'upload' %}
@@ -49,11 +49,11 @@
         </a>
       {% endif %}
       {% if can_edit %}
-        <a href="{{ res.edit }}" class="btn btn-primary">
+        <a href="{{ h.url_for('resource.edit', id=pkg.name, resource_id=res.id) }}" class="btn btn-primary">
           <i class="fa fa-pencil-square-o"></i>
           {{ _('Edit') }}
         </a>
       {% endif %}
-    </span>
+    </div>
   {% endblock %}
 </li>
