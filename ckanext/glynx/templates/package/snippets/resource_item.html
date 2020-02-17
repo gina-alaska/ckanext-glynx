@@ -48,6 +48,12 @@
           {% endif %}
         </a>
       {% endif %}
+      {% if can_edit %}
+        <a href="{{ h.url_for('resource.edit', id=pkg.name, resource_id=res.id) class="btn btn-primary pull-right" }}">
+          <i class="fa fa-pencil-square-o"></i>
+          {{ _('Edit') }}
+        </a>
+      {% endif %}
     </span>
   {% endblock %}
 </li>
