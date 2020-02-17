@@ -49,7 +49,7 @@
         </a>
       {% endif %}
       {% if can_edit %}
-        <a href="{{ h.url_for('resource.edit', id=pkg_dict.name, resource_id=res.id) }}" class="btn btn-info">
+        <a href="{{ h.url_for('resource.edit', id=pkg.name, resource_id=res.id) }}" class="btn btn-info">
           <i class="fa fa-pencil-square-o"></i>
           {{ _('Edit') }}
         </a>
