@@ -23,11 +23,11 @@ Example:
     {% block content %}
       <div class="dataset-content">
         {% block resource_thumbnail %}
-          <div class="pull-left">
+          <div class="pull-left" style="padding-right: 5px;">
             {% for resource in package.resources %}
               {% if resource.format == "JPEG" or resource.format == "PNG" %}
                 <a href="{{ resource.url }}" target="_blank">
-                  <img src="{{resource.url}}" width="140" />
+                  <img src="{{resource.url}}" width="90" />
                 </a>
                 {% break %}
               {% endif %}
