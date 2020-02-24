@@ -19,8 +19,8 @@ Example:
 {% set notes = h.markdown_extract(package.notes, extract_length=truncate) %}
 
 {% block package_item %}
-  <li class="{{ item_class or "dataset-item" }}">
-    {% block thumbnail %}
+  {# <li class="{{ item_class or "dataset-item" }}">
+    {% block resource_thumbnail %}
       <div>
         {% for resource in package.resources %}
           {% if resource.format == "JPEG" or resource.format == "PNG" %}
@@ -31,7 +31,7 @@ Example:
           {% endif %}
         {% endfor %}
       </div>
-    {% endblock %}
+    {% endblock %} #}
     {% block content %}
       <div class="dataset-content">
         {% block heading %}
