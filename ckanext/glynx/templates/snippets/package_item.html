@@ -20,20 +20,20 @@ Example:
 
 {% block package_item %}
   <li class="{{ item_class or "dataset-item" }}">
-    {% block resource_thumbnail %}
-      <div>
-        {% for resource in package.resources %}
-          {% if resource.format == "JPEG" or resource.format == "PNG" %}
-            <a href="{{ resource.url }}" target="_blank">
-              <img src="{{resource.url}}" width="140" />
-            </a>
-            {% break %}
-          {% endif %}
-        {% endfor %}
-      </div>
-    {% endblock %} #}
     {% block content %}
       <div class="dataset-content">
+        {% block resource_thumbnail %}
+          <div>
+            {% for resource in package.resources %}
+              {% if resource.format == "JPEG" or resource.format == "PNG" %}
+                <a href="{{ resource.url }}" target="_blank">
+                  <img src="{{resource.url}}" width="140" />
+                </a>
+                {% break %}
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% endblock %}
         {% block heading %}
           <h3 class="dataset-heading">
             {% block heading_private %}
