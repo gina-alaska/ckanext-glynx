@@ -1,6 +1,8 @@
 {% block arc_iframe %}
+  <div style="position:relative;">
   <a href="{{arc_full}}" target="_blank">
     <h2 class="module-heading"><i class="fa fa-map"></i> {{ _("Interactive Map") }}</h2>
     <iframe src="{{arc_url}}" width="290" height="250" style="pointer-events: none;"></iframe>
   </a>
+  </div>
 {% endblock %}
