@@ -6,7 +6,7 @@
   {% set arcgis_full_url = h.get_pkg_dict_extra(c.pkg_dict, 'arcgis_fullmap', '') %}
 
   {% if arcgis_url %}
-    {% snippet "package/snippets/arc_iframe.html", arc_url=arcgis_url, arc_full=arcgis_fullmap %}
+    {% snippet "package/snippets/arc_iframe.html", arc_url=arcgis_url, arc_full=arcgis_full_url %}
   {% elif dataset_extent %}
     {% snippet "spatial/snippets/dataset_map_sidebar.html", extent=dataset_extent %}
   {% endif %}
