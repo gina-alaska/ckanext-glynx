@@ -85,8 +85,12 @@
       <nav class="section navigation">
         <ul class="nav nav-pills">
             {% block header_site_navigation_tabs %}
+          <li>
+              <a href='https://uaa-geomatics.maps.arcgis.com/apps/webappviewer/index.html?id=863b68ed2b85402fbbe9a90e57f3438e'>
+                 _('Plot Archive')),
+              </a>
+          </li>
     {{ h.build_nav_main(
-        ('https://uaa-geomatics.maps.arcgis.com/apps/webappviewer/index.html?id=863b68ed2b85402fbbe9a90e57f3438e', _('Plot Archive')),
         ('dataset.search', _('Datasets')),
         ('organization.index', _('Organizations')),
         ('group.index', _('Groups')),
