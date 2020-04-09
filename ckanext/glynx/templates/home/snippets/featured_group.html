@@ -1,7 +1,7 @@
 {% set groups = c.group_dict %}
 
 {% for group in groups %}
-  {% group %}
+  {{ group }}
   {% set featured_true = group.get_pkg_dict_extra(c.group_dict, 'featured', '') %}
   {% if featured_true %}
     <div class="box">
