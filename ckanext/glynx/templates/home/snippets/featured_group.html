@@ -1,9 +1,8 @@
-{% set groups = c.group_dict %}
+{% set groups = h.get_featured_groups() %}
 
 {% for group in groups %}
-  {{ group %}
-  {% set featured_true = group.get_pkg_dict_extra(c.group_dict, 'featured', '') %}
-  {% if featured_true %}
+  {% set featured_set = group.get_pkg_dict_extra(c.pkg_dict, 'featured', '') %}
+  {% if featured_set %}
     <div class="box">
       {% snippet 'snippets/group_item.html', group=group, truncate=50, truncate_title=35 %}
     </div>
