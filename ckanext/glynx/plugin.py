@@ -24,6 +24,12 @@ import json
 #         raise tk.Invalid('Invalid Iso Topic Category value: {}'.format(value))
 #     return value
 
+def list_group():
+    '''Return a list of groups.'''
+
+    # Get a list of all the site's groups from CKAN
+    groups = toolkit.get_action('group_list')
+    return groups
 
 class GlynxPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
     p.implements(p.ITemplateHelpers)
@@ -48,6 +54,7 @@ class GlynxPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
 
     def get_helpers(self):
         return {
+                 'list_group': list_group
         #         'iso_topic_categories': iso_topic_categories
         }
 
