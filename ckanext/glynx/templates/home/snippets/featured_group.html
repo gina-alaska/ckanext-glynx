@@ -1,4 +1,4 @@
-{% set groups = c.group_dict %}
+{% set groups = logic.get_action('group_list') %}
 
 {% for group in groups %}
   {{ group }}
