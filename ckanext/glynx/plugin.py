@@ -27,8 +27,13 @@ import json
 def list_group():
     '''Return a list of groups.'''
 
+    groups = []
     # Get a list of all the site's groups from CKAN
-    groups = toolkit.get_action('group_list')
+    for group in toolkit.get_action('group_list'):
+      if group.featured:
+        groups.append(group)
+      endif
+    endfor
     return groups
 
 class GlynxPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):

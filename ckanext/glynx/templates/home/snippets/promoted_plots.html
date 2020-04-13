@@ -1,3 +1,5 @@
+{% set groups = h.group_list or [] %}
+
 <div class="module-content box">
   <header>
       <h2 class="page-heading">{{ _("Alaska Arctic Vegetation Archive") }}</h2>
@@ -6,4 +8,11 @@
         {% endtrans %}
       </p>
   </header>
+  <section class="featured">
+    {% for group in groups *}
+      <a href="{{ h.group_link(group) }}">
+        <h2>{{ group.title }}</h2>
+      </a>
+    {* endfor *}
+  </section>
 </div>
