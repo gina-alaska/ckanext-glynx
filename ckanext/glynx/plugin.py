@@ -29,7 +29,7 @@ def list_group():
 
     groups = []
     # Get a list of all the site's groups from CKAN
-    for group in toolkit.get_action('group_list'):
+    for group in toolkit.get_action('group_list', data_dict={ 'all_fields': True, 'include_extras': True }):
       if group.featured:
         groups.append(group)
       endif
