@@ -5,10 +5,10 @@
         {% block search %}
           {% snippet 'home/snippets/search.html' %}
         {% endblock %}
-		{% block promoted %}
+    		{% block promoted_maps %}
           {% snippet 'home/snippets/promoted_maps.html' %}
         {% endblock %}
-		{% block promoted %}
+	    	{% block promoted_taga %}
           {% snippet 'home/snippets/promoted_taga.html' %}
         {% endblock %}
     </div>
@@ -16,7 +16,7 @@
         {% block promoted %}
           {% snippet 'home/snippets/promoted.html' %}
         {% endblock %}
-		{% block promoted %}
+    		{% block promoted_plots %}
           {% snippet 'home/snippets/promoted_plots.html' %}
         {% endblock %}
       </div>
@@ -27,7 +27,7 @@
   <div class="container">
     <div class="row row2">
       <div class="col-md-6 col2">
-		{% block featured_group %}
+    		{% block featured_group %}
           {% snippet 'home/snippets/featured_group.html' %}
         {% endblock %}
       </div>
