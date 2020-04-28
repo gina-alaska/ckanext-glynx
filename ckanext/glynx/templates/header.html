@@ -86,12 +86,17 @@
         <ul class="nav nav-pills">
           {% block header_site_navigation_tabs %}
           <li>
+              <a href='/group/all-maps'>
+                 Map Archive
+              </a>
+          </li>
+          <li>
               <a href='/group/all-vegetation-plot-data'>
                  Plot Archive
               </a>
           </li>
-          {{ h.build_nav_main( ('search', _('Datasets')), ('organizations_index', _('Organizations')),
-          ('group_index', _('Groups')), ('home.about', _('About')) ) }} {% endblock %}
+          {{ h.build_nav_main( ('search', _('Datasets')), ('group_index', _('Groups')),
+           ('home.about', _('About')) ) }} {% endblock %}
         </ul>
       </nav>
       {% endblock %} {% block header_site_search %}
