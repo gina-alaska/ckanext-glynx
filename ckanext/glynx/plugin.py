@@ -132,5 +132,6 @@ class GlynxPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
         # Add this plugin's public dir to CKAN's extra_public_paths, so
         # that CKAN will use this plugin's custom static files.
         tk.add_public_directory(config, 'public')
+        toolkit.add_resource('fanstatic', 'glynx')
 
 
