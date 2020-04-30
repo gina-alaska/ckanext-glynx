@@ -8,10 +8,13 @@
         {% block stats %}
           {% snippet 'home/snippets/stats.html' %}
         {% endblock %}
-      </div>
-      <div class="col-md-6 col2">
         {% block featured_group %}
           {% snippet 'home/snippets/featured_group.html' %}
+        {% endblock %}
+      </div>
+      <div class="col-md-6 col2">
+        {% block promoted %}
+          {% snippet 'home/snippets/promoted.html' %}
         {% endblock %}
       </div>
     </div>
